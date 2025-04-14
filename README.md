@@ -1,6 +1,6 @@
 ## Akses Admin:
 - Username : admin
-- password : indonesia
+- password : admin123
 
 ## Akses Petugas:
 - Username : petugas
