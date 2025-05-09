@@ -7,7 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Login | Pengaduan Masyarakat</title>
+  <title>Register | Pengaduan Masyarakat</title>
 
   @stack('prepend-style')
   @include('includes.admin.style')
@@ -43,7 +43,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a href="/" class="nav-link">
-              <span class="nav-link-inner--text">Home</span>
+              <span class="nav-link-inner--text">HOME</span>
             </a>
           </li>
           {{-- <li class="nav-item">

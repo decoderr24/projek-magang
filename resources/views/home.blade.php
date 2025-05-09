@@ -7,7 +7,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
-      <h1>Pengaduan Masyarakat</h1>
+      <h1 class="judul">Pengaduan Masyarakat</h1>
       <a href="{{ route('pengaduan')}}" class="btn-get-started scrollto">Buat Pengaduan</a>
     </div>
   </section><!-- End Hero -->

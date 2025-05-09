@@ -51,16 +51,14 @@
    <!-- ======= Header ======= -->
    <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="/">Pengaduan Masyarakat</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    <a href="https://manyaran.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/logokel.png" alt="" class="img-fluid"></a>
+      <!--<h1 class="logo me-auto"><a href="/">Pengaduan Masyarakat</a></h1>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0 ">
         <ul>
-          <li><a class="nav-link scrollto {{ (request()->is('/pengaduan')) ? 'active' : '' }}" href="{{ route('pengaduan')}}">Buat Pengaduan</a></li>
+          <li><a class="nav-link scrollto {{ (request()->is('/pengaduan')) ? 'active' : '' }}" style="color: #fff" href="{{ route('pengaduan')}}">Buat Pengaduan</a></li>
           {{-- <li><a class="nav-link scrollto {{ (request()->is('tentang')) ? 'active' : '' }}" href="{{ url('tentang')}}">Tentang</a></li> --}}
-          <li><a class="nav-link scrollto {{ (request()->is('pengaduan.laporan')) ? 'active' : '' }}" href="{{ route('pengaduan.laporan', 'saya')}}">Pengaduan Saya</a></li>
+          <li><a class="nav-link scrollto {{ (request()->is('pengaduan.laporan')) ? 'active' : '' }}" style="color: #fff" href="{{ route('pengaduan.laporan', 'saya')}}">Pengaduan Saya</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -74,7 +72,7 @@
     </div>
   </header><!-- End Header -->
 
-  @yield('content')
+    @yield('content')
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -82,13 +80,10 @@
     <div class="footer-top">
       <div class="container">
         <div class="row justify-content-between">
-
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Pengaduan Masyarakat</h3>
-            <p>
+            <h3 style="color: #fff;">Pengaduan Masyarakat</h3>
+            <p style="color: #fff;">
               Rifky & Wildan<br>
-              Project<br>
-
             </p>
           </div>
 
@@ -101,14 +96,11 @@
             </ul>
           </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Kontak Kami</h4>
-            <ul>
-              <p>
-                <strong>Email:</strong> rifkybintang24@gmail.com<br>
-                <strong>Email:</strong> wildanamiruddin@gmail.com<br>
-              </p>
-            </ul>
+          <div class="col-lg-3 col-md-6 footer-links" style="color :#fff; text-align: center;">
+            <a href="https://semarangkota.go.id/" class="logo me-auto"><img src="assets/img/pemkotlogo.png" alt="" class="img-fluid" style="display: inline-block; width: 120px; "></a>
+            <a href="https://smartcity.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/smartcity.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
+            <a href="https://data.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/satudata.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
+            <a href="https://ppid.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/ppid.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
           </div>
 
         </div>

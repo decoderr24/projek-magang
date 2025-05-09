@@ -6,13 +6,13 @@
 <main id="main" class="martop">
 
     <section class="inner-page">
-      <div class="container ">
+      <div class="container">
         <div class="title text-center mb-5">
             <h3 class="fw-bold">Layanan Pengaduan Masyarakat</h3>
             <h5 class="fw-normal">Sampaikan laporan Anda langsung kepada instansi pemerintah berwenang</h5>
         </div>
-       <div class="card card-responsive p-4 border-0 col-md-8 shadow rounded mx-auto">
-        <form action="{{ route('pengaduan.store')}}" method="POST" enctype="multipart/form-data">
+       <div class="card card-responsive p-4 border-0 col-md-8 shadow rounded mx-auto" style=" background-color: rgb(255, 255, 255, 0.5);">
+        <form action="{{ route('pengaduan.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-3">
                 <label for="judul_laporan" class="form-label">Judul Laporan</label>
@@ -59,8 +59,8 @@
             </div>
             <div class="form-group mb-3">
                 <label for="foto" class="form-label">Foto Bukti</label>
-                <input type="file" name="foto" id="foto" class="form-control @error('file') is-invalid @enderror" required>
-                @error('file')
+                <input type="file" name="foto" id="foto" class="form-control @error('foto') is-invalid @enderror" required>
+                @error('foto')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -70,6 +70,11 @@
             <button type="submit" class="btn btn-primary">KIRIM</button>
 
         </form>
+        @if(isset($pengaduan) && $pengaduan instanceof \App\Models\Pengaduan && $pengaduan->foto)
+            <div class="mt-3">
+                <img src="{{ asset($pengaduan->foto) }}" alt="Foto Pengaduan" class="img-fluid">
+            </div>
+        @endif
        </div>
       </div>
     </section>
@@ -84,7 +89,7 @@
                 title: 'Peringatan!',
                 text: "Anda harus login terlebih dahulu!",
                 icon: 'warning',
-                confirmButtonColor: '#28B7B5',
+                confirmButtonColor: '#1977cc',
                 confirmButtonText: 'Masuk',
                 allowOutsideClick: false
                 }).then((result) => {
@@ -101,7 +106,7 @@
                 title: 'Peringatan!',
                 text: "Akun belum diverifikasi!",
                 icon: 'warning',
-                confirmButtonColor: '#28B7B5',
+                confirmButtonColor: '#1977cc',
                 confirmButtonText: 'Ok',
                 allowOutsideClick: false
                 }).then((result) => {

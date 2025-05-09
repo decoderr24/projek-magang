@@ -29,6 +29,12 @@
                         <i class="fas fa-clipboard-check text-info"></i> Verifikasi & Validasi
                     </a>
                   </li>
+                  <li class="{{ request()->is('admin/pengaduan/ditinjau') ? 'active' : '' }}">
+                      <a class="nav-link" href="{{ route('pengaduan.index', 'ditinjau')}}">
+                      <!--<a href="{{ url('admin/pengaduan/ditinjau') }}">-->
+                        <i class="fas fa-sync text-yellow"></i> Sedang Ditinjau
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('pengaduan.index', 'proses')}}">
                         <i class="fas fa-sync text-yellow"></i> Sedang Diproses

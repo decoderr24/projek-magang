@@ -10,7 +10,6 @@ class Pengaduan extends Model
     use HasFactory;
 
     protected $table = 'pengaduan';
-
     protected $primaryKey = 'id_pengaduan';
 
     protected $fillable = [
@@ -26,5 +25,21 @@ class Pengaduan extends Model
 
     public function user() {
         return $this->hasOne(Masyarakat::class, 'nik', 'nik');
+    }
+
+    public function getFotoAttribute($value)
+    {
+        if ($value) {
+            return $value; // Return the path as stored in database
+        }
+        return null;
+    }
+
+    public function setFotoAttribute($value)
+    {
+        // Only store the path, not the full URL
+        if ($value && !filter_var($value, FILTER_VALIDATE_URL)) {
+            $this->attributes['foto'] = $value;
+        }
     }
 }

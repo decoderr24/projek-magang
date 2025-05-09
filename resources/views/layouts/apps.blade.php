@@ -51,11 +51,8 @@
    <!-- ======= Header ======= -->
    <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="/">Pengaduan Masyarakat</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+    <a href="https://manyaran.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/logokel.png" alt="" class="img-fluid"></a>
+     <!-- <h1 class="logo me-auto"><a href="/">Pengaduan Masyarakat</a></h1> -->
       {{-- <nav id="navbar" class="navbar order-last order-lg-0 ">
         <ul>
           <li><a class="nav-link scrollto {{ (request()->is('/')) ? 'active' : '' }}" href="/">Home</a></li>
@@ -84,11 +81,9 @@
         <div class="row justify-content-between">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>PENGADUAN MASYARAKAT</h3>
-            <p>
-              Rifky & Wildan<br>
-              Project<br>
-
+            <h3 style="color: #fff;">PENGADUAN MASYARAKAT</h3>
+            <p style="color: #fff;">
+              Kelurahan Manyaran<br>
             </p>
           </div>
 
@@ -97,17 +92,15 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ url('tentang')}}">Tentang</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('tentang')}}">Pengaduan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('pengaduan')}}">Pengaduan</a></li>
             </ul>
           </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Kontak Kami</h4>
-            <ul>
-              <p>
-              <strong>Email:</strong> rifkybintang24@gmail.com<br>
-              <strong>Email:</strong> wildanamiruddin@gmail.com<br>
-              </p>
+          <div class="col-lg-3 col-md-6 footer-links" style="color :#fff; text-align: center;">
+          <a href="https://semarangkota.go.id/" class="logo me-auto"><img src="assets/img/pemkotlogo.png" alt="" class="img-fluid" style="display: inline-block; width: 120px; "></a>
+          <a href="https://smartcity.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/smartcity.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
+          <a href="https://data.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/satudata.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
+          <a href="https://ppid.semarangkota.go.id/" class="logo me-auto"><img src="assets/img/ppid.png" alt="" class="img-fluid" style="display: inline-block; width: 120px;"></a>
             </ul>
           </div>
 
@@ -149,3 +142,4 @@
 </body>
 
 </html>
+

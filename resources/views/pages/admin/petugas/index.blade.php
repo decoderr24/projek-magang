@@ -44,7 +44,6 @@
                       <th scope="col" class="sort" data-sort="username">username</th>
                       <th scope="col" class="sort" data-sort="tlp">No Telpon</th>
                       <th scope="col" class="sort" data-sort="role">Role</th>
-                      <th scope="col" class="sort" data-sort="action">Aksi</th>
                     </tr>
                   </thead>
                   <tbody class="list">

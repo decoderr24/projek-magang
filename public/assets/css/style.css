@@ -109,7 +109,21 @@ h1, h2, h3, h4, h5, h6 {
 .datepicker-dropdown {
   padding: 20px !important;
 }
-
+/*--------------------------------------------------------------
+# bg-default
+--------------------------------------------------------------*/
+#bg-login {
+  width: 100%;
+  height: 90vh;
+  background-image: url("../img/hero.jpg");
+  background-size: cover;
+}
+#bg .bg-main-content {
+  width: 100%;
+  height: 90vh;
+  background-image: url("../img/hero.jpg") center;
+  background-size: 100%;
+}
 /*--------------------------------------------------------------
 # Top Bar
 --------------------------------------------------------------*/
@@ -166,11 +180,10 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background: #082744;
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
-  box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 
 #header.header-scrolled {
@@ -188,11 +201,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo a {
-  color: #2c4964;
+  float: left;
+  color: #fff;
 }
 
 #header .logo img {
+  float: left;
   max-height: 40px;
+}
+.header .bg-default {
+  background-image: url("{{ asset('asset/img/hero.jpg') }}");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /**
@@ -200,8 +221,8 @@ h1, h2, h3, h4, h5, h6 {
 */
 .appointment-btn {
   margin-left: 25px;
-  background: #1977cc;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
   border-radius: 50px;
   padding: 8px 25px;
   white-space: nowrap;
@@ -211,9 +232,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .appointment-btn:hover {
-  background: #166ab5;
+  background: #1977cc;
   color: #fff;
-}
+} 
 
 @media (max-width: 768px) {
   .appointment-btn {
@@ -452,7 +473,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 90vh;
   background: url("../img/hero.jpg") top center;
   background-size: cover;
-  margin-bottom: -200px;
+  margin-bottom: -100px;
+  margin-top: -150px;
 }
 
 #hero .container {
@@ -461,11 +483,15 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h1 {
   margin: 0;
+  margin-top: 30vh;
+  shape-outside: margin-box;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
   text-transform: uppercase;
-  color: #2c4964;
+  color: #0b61ac;
+  text-shadow: 0px 2px 5px #000000;
+
 }
 
 #hero h2 {
@@ -495,7 +521,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   #hero {
-    background-attachment: fixed;
+    background-attachment: none;
   }
 }
 
@@ -582,9 +608,13 @@ section {
 
 .martop{
     margin-top: 80px;
+    background-image: url("../img/hero.jpg");
+    background-size: 100%;
+
+    
 }
 .breadcrumbs {
-  padding: 20px 0;
+  padding: 50px 0;
   background-color: #f1f7fd;
   min-height: 40px;
   margin-top: 120px;
@@ -1106,7 +1136,7 @@ section {
   border: 0;
   padding: 12px 15px 12px 0;
   transition: 0.3s;
-  color: #2c4964;
+  color: #fff;
   border-radius: 0;
   border-right: 2px solid #ebf1f6;
   font-weight: 600;
@@ -1118,8 +1148,8 @@ section {
 }
 
 .departments .nav-link.active {
-  color: #1977cc;
-  border-color: #1977cc;
+  color: #fff;
+  border-color: #fff;
 }
 
 .departments .tab-pane.active {
@@ -1591,7 +1621,7 @@ section {
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
-  background: #fff;
+  background: #082744;
   box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 
@@ -1624,7 +1654,7 @@ section {
 }
 
 #footer .footer-top .footer-links {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #footer .footer-top .footer-links ul {

@@ -8,7 +8,7 @@
     <section class="inner-page">
       <div class="container ">
         <!-- <div class="title text-center mb-5">
-            <h3 class="fw-bold">Layanan Pengaduan Masyarakat Sagalaherang</h3>
+            <h3 class="fw-bold">Layanan Pengaduan Masyarakat</h3>
             <h5 class="fw-normal">Sampaikan laporan Anda langsung kepada instansi pemerintah berwenang</h5>
         </div> -->
 
@@ -29,6 +29,8 @@
                     <p>
                         @if($pengaduan->status == '0')
                             <span class="text-sm text-white p-1 bg-danger">Pending</span>
+                        @elseif($pengaduan->status == 'ditinjau')
+                        <span class="text-sm text-white p-1 bg-warning">Ditinjau</span>
                         @elseif($pengaduan->status == 'proses')
                             <span class="text-sm text-white p-1 bg-warning">Proses</span>
                         @else
@@ -41,7 +43,13 @@
             </div>
         </div>
 
-
+        <div class="form-group">
+            @if($pengaduan->foto)
+                <img src="{{ $pengaduan->foto }}" alt="Foto Pengaduan" class="img-fluid mt-2">
+            @else
+                <p>No image available</p>
+            @endif
+        </div>
 
       </div>
     </section>

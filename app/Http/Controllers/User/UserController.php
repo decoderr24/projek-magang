@@ -203,50 +203,50 @@ class UserController extends Controller
 
     public function storePengaduan(Request $request)
     {
+        // Check authentication and verification
         if (!Auth::guard('masyarakat')->check()) {
             return redirect()->back()->with(['pengaduan' => 'Login dibutuhkan!', 'type' => 'error']);
         } elseif (Auth::guard('masyarakat')->user()->email_verified_at == null && Auth::guard('masyarakat')->user()->telp_verified_at == null) {
             return redirect()->back()->with(['pengaduan' => 'Akun belum diverifikasi!', 'type' => 'error']);
         }
 
-        $data = $request->all();
-
-        $validate = Validator::make($data, [
+        // Validate request data
+        $validate = Validator::make($request->all(), [
             'judul_laporan' => ['required'],
             'isi_laporan' => ['required'],
             'tgl_kejadian' => ['required'],
             'lokasi_kejadian' => ['required'],
-            // 'id_kategori' => ['required'],
+            'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ]);
 
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
         }
 
+        try {
+            $foto = null;
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                // Store directly in public folder
+                $file->move(public_path('assets/pengaduan'), $filename);
+                $foto = 'assets/pengaduan/' . $filename;
+            }
 
-        if ($request->file('foto')) {
-            $data['foto'] = $request->file('foto')->store('assets/pengaduan', 'public');
-        }
-
-        date_default_timezone_set('Asia/Bangkok');
-
-        $pengaduan = Pengaduan::create([
-            'tgl_pengaduan' => date('Y-m-d h:i:s'),
-            'nik' => Auth::guard('masyarakat')->user()->nik,
-            'judul_laporan' => $data['judul_laporan'],
-            'isi_laporan' => $data['isi_laporan'],
-            'tgl_kejadian' => $data['tgl_kejadian'],
-            'lokasi_kejadian' => $data['lokasi_kejadian'],
-            // 'id_kategori' => $data['id_kategori'],
-            'foto' => $data['foto'] ?? 'assets/pengaduan/tambakmekar.png',
-            'status' => '0',
-        ]);
-
-        if ($pengaduan) {
+            $pengaduan = Pengaduan::create([
+                'tgl_pengaduan' => date('Y-m-d h:i:s'),
+                'nik' => Auth::guard('masyarakat')->user()->nik,
+                'judul_laporan' => $request->judul_laporan,
+                'isi_laporan' => $request->isi_laporan,
+                'tgl_kejadian' => $request->tgl_kejadian,
+                'lokasi_kejadian' => $request->lokasi_kejadian,
+                'foto' => $foto,
+                'status' => '0',
+            ]);
 
             return redirect()->back()->with(['pengaduan' => 'Berhasil terkirim!', 'type' => 'success']);
-        } else {
-
+        } catch (\Exception $e) {
+            \Log::error('Pengaduan creation failed: ' . $e->getMessage());
             return redirect()->back()->with(['pengaduan' => 'Gagal terkirim!', 'type' => 'error']);
         }
     }

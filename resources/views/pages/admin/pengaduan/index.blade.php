@@ -64,6 +64,8 @@
                           <div class="d-flex align-items-center">
                             @if($v->status == '0')
                                 <span class="text-sm badge badge-danger">Pending</span>
+                            @elseif($v->status == 'ditinjau')
+                              <span class="text-sm badge badge-warning">diTinjau</span>
                             @elseif($v->status == 'proses')
                                 <span class="text-sm badge badge-warning">Proses</span>
                             @else
@@ -73,8 +75,13 @@
                         </td>
                         @if ($status == '0')
                             <td>
+                                <a href="#" data-id_pengaduan="{{ $v->id_pengaduan }}" class="btn btn-success pengaduanReview">Ditinjau</a>
                                 <a href="#" data-id_pengaduan="{{ $v->id_pengaduan }}" class="btn btn-primary pengaduan">Verifikasi</a>
                                 <a href="#" data-id_pengaduan="{{ $v->id_pengaduan }}" class="btn btn-danger pengaduanDelete">Hapus</a>
+                            </td>
+                        @elseif($status == 'ditinjau')
+                            <td>
+                            <a href="#" data-id_pengaduan="{{ $v->id_pengaduan }}" class="btn btn-primary pengaduan">Verifikasi</a>
                             </td>
                         @else
                             <td><a href="{{ route('pengaduan.show', $v->id_pengaduan)}}" class="btn btn-info">Lihat</a></td>
@@ -120,9 +127,17 @@
 @push('addon-script')
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#pengaduanTable').DataTable();
-    } );
+$(document).ready(function () {
+    $('#pengaduanTable').DataTable({
+        // Add your DataTable options here
+    });
+
+    // Example: Log id_pengaduan for debugging
+    $('.pengaduan').each(function () {
+        let id_pengaduan = $(this).data('id_pengaduan');
+        console.log(id_pengaduan); // Log the id_pengaduan here
+    });
+});
 </script>
 
 <script>
@@ -131,9 +146,46 @@
         console.log(id);
     });
 
+    $(document).on('click', '.pengaduanReview', function (e) {
+    e.preventDefault();
+    let id_pengaduan = $(this).data('id_pengaduan');
+    console.log('ID Pengaduan:', id_pengaduan);
+
+    Swal.fire({
+        title: 'Peringatan!',
+        text: "Tandai pengaduan ini sebagai Ditinjau?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: `/admin/pengaduan/ditinjau/${id_pengaduan}`,
+                data: {
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    if (response == 'success') {
+                        Swal.fire('Berhasil!', 'Pengaduan telah ditandai sebagai Ditinjau.', 'success')
+                            .then(() => location.reload());
+                    }
+                },
+                error: function (xhr) {
+                    console.error('Error:', xhr.responseText);
+                    Swal.fire('Gagal!', 'Terjadi kesalahan saat menandai.', 'error');
+                }
+            });
+        }
+    });
+});
+
     $(document).on('click', '.pengaduan', function (e) {
         e.preventDefault();
         let id_pengaduan = $(this).data('id_pengaduan');
+        console.log(id_pengaduan);
         Swal.fire({
                 title: 'Peringatan!',
                 text: "Apakah Anda yakin akan memverifikasi pengaduan?",
@@ -194,6 +246,7 @@
     $(document).on('click', '.pengaduanDelete', function (e) {
         e.preventDefault();
         let id_pengaduan = $(this).data('id_pengaduan');
+        console.log(id_pengaduan);
         Swal.fire({
                 title: 'Peringatan!',
                 text: "Apakah Anda yakin akan menghapus pengaduan?",
