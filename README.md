@@ -1,2 +1,10 @@
 # projek-magang
->>>>>>> d3a5bc887686fe8294391b2fcccc050af9f6034a
+--Admin-- 
+username : admin
+password : Indonesia
+--Petugas--
+username : petugas
+password : petugas
+--User Default--
+username : user
+password : user1234
