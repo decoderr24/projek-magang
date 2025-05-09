@@ -1,11 +1,2 @@
-## Akses Admin:
-- Username : admin
-- password : admin123
-
-## Akses Petugas:
-- Username : petugas
-- password : petugas
-
-## Akses User:
-- Username : user
-- password : user1234
+# projek-magang
+>>>>>>> d3a5bc887686fe8294391b2fcccc050af9f6034a
