@@ -4,7 +4,7 @@
 
 username : admin
 
-password : Indonesia
+password : indonesia
 
 --Petugas--
 
